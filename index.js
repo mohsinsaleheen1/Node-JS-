@@ -5,7 +5,19 @@ let fs = require("fs");
 // let data = fs.readFileSync("info.txt","utf-8");
 // console.log(data);
 // console.log("...The Ending Statement...");
-fs.readFile("info.txt", "utf-8", (err, data) => {
-  console.log(data);
-});
-console.log("...The Ending Statement...");
+// fs.readFile("info.txt", "utf-8", (err, data) => {
+//   console.log(data);
+// });
+// console.log("...The Ending Statement...");
+// fs.writeFileSync("Mydata.txt","This is FS Modules");
+// let data = fs.readFileSync("Mydata.txt","utf-8");
+// console.log(data);
+// fs.appendFileSync("Mydata.txt","\n Hy I Am Mohsin Saleheen");
+// fs.writeFileSync("data1.txt","Example");
+// fs.unlinkSync("data1.txt");
+// fs.renameSync("data.txt","myfolder/data.txt");
+// fs.mkdirSync("New Folder");
+// fs.renameSync("Mydata.txt","New Folder/Mydata.txt");
+// fs.readdirSync("./");
+// fs.writeFileSync("hhh.txt","Hello");
+fs.existsSync("mm.txt");
