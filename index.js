@@ -1,7 +1,7 @@
 // console.log("Hello Hy");
 // console.log("Ha Bhai");
 // console.log("Kaisay hun ustaad");
-let fs = require("fs");
+// let fs = require("fs");
 // let data = fs.readFileSync("info.txt","utf-8");
 // console.log(data);
 // console.log("...The Ending Statement...");
@@ -20,4 +20,22 @@ let fs = require("fs");
 // fs.renameSync("Mydata.txt","New Folder/Mydata.txt");
 // fs.readdirSync("./");
 // fs.writeFileSync("hhh.txt","Hello");
-fs.existsSync("mm.txt");
+// fs.existsSync("mm.txt");
+// HTTP Module
+let http = require("http");
+// const server = http.createServer((req, res) => {
+//   res.write("Response From Server... Mohsin");
+//   res.end();
+// });
+// server.listen(3000, "localhost", () => {
+//   console.log("Server Running At http://localhost:3000");
+// });
+http
+  .createServer(function (rwq, res) {
+    res.setHeader("Content-Type", "text/plain");
+    res.write("Response From Server");
+    res.end();
+  })
+  .listen(3000, "localhost", () => {
+    console.log("Server Running At http://localhost:3000");
+  });
