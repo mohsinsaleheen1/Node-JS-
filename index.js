@@ -22,7 +22,7 @@
 // fs.writeFileSync("hhh.txt","Hello");
 // fs.existsSync("mm.txt");
 // HTTP Module
-let http = require("http");
+// let http = require("http");
 // const server = http.createServer((req, res) => {
 //   res.write("Response From Server... Mohsin");
 //   res.end();
@@ -30,12 +30,25 @@ let http = require("http");
 // server.listen(3000, "localhost", () => {
 //   console.log("Server Running At http://localhost:3000");
 // });
-http
-  .createServer(function (rwq, res) {
-    res.setHeader("Content-Type", "text/plain");
-    res.write("Response From Server");
+// http
+//   .createServer(function (rwq, res) {
+//     res.setHeader("Content-Type", "text/plain");
+//     res.write("Response From Server");
+//     res.end();
+//   })
+//   .listen(3000, "localhost", () => {
+//     console.log("Server Running At http://localhost:3000");
+//   });
+// Url Module
+const url = require('url');
+// let adr = 'https://www.example.com/category/search?name=Ali&Age=21#section3'
+// const myurl =url.parse(adr,true);
+// console.log(myurl)
+const http = require('http');
+http.createServer((req,res)=>{
+    res.write("Response From Server..");
+    console.log(req.url)
     res.end();
-  })
-  .listen(3000, "localhost", () => {
-    console.log("Server Running At http://localhost:3000");
-  });
+}).listen(3000,'localhost',()=>{
+    console.log("Our server is runing at http://localhost:3000")
+})
