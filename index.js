@@ -40,15 +40,53 @@
 //     console.log("Server Running At http://localhost:3000");
 //   });
 // Url Module
-const url = require('url');
+// const url = require('url');
 // let adr = 'https://www.example.com/category/search?name=Ali&Age=21#section3'
 // const myurl =url.parse(adr,true);
 // console.log(myurl)
-const http = require('http');
-http.createServer((req,res)=>{
-    res.write("Response From Server..");
-    console.log(req.url)
-    res.end();
-}).listen(3000,'localhost',()=>{
-    console.log("Our server is runing at http://localhost:3000")
-})
+// const http = require('http');
+// http.createServer((req,res)=>{
+//     res.write("Response From Server..");
+//     console.log(req.url)
+//     res.end();
+// }).listen(3000,'localhost',()=>{
+//     console.log("Our server is runing at http://localhost:3000")
+// });
+// Routing Module 
+// const http = require("http");
+// const fs = require("fs");
+// http.createServer((req,res)=>{
+//     if(req.url === "/"){
+//         fs.readFile('./public/home.html',(err,data)=>{
+//             if(err) throw err;
+//             res.write(data);
+//             res.end();
+//         })
+//     }
+//     else if(req.url === "/about"){
+//         fs.readFile('./public/about.html',(err,data)=>{
+//             if(err) throw err;
+//             res.write(data);
+//             res.end();
+//         })
+//     }
+//     else if(req.url === "/contact"){
+//         fs.readFile('./public/contact.html',(err,data)=>{
+//             if(err) throw err;
+//             res.write(data);
+//             res.end();
+//         })
+//     }
+//     else if(req.url === "/services"){
+//         fs.readFile('./public/services.html',(err,data)=>{
+//             if(err) throw err;
+//             res.write(data);
+//             res.end();
+//         })
+//     }else{
+//         res.write("<h1>404 Page Not Found...</h1>");
+//         res.end();
+//     }
+// }).listen(3000,'localhost',()=>{
+//     console.log("server is up and running at http://localhost:3000");
+// })
