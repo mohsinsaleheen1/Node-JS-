@@ -102,5 +102,14 @@
 // console.log(path.resolve("users","category","diagrams","flowchart"))
 // console.log(path.parse(filename));
 // console.log(path.isAbsolute(filename));
-require('./module1');
-require('./module2');
+// require('./module1');
+// require('./module2');
+// function show1(name){
+//     console.log(`Hello ${name}`);
+// }
+// function show2(Showname){
+//     let name = "Mohsin Saleen";
+//     Showname(name);
+// }
+// show2(show1)
+// Events Module
