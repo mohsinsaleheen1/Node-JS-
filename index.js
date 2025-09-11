@@ -91,8 +91,8 @@
 //     console.log("server is up and running at http://localhost:3000");
 // })
 // Path Module
-const path = require("path");
-let filename = 'C:\\Users\\T\\Desktop\\Node JS\\Public\\index.html';
+// const path = require("path");
+// let filename = 'C:\\Users\\T\\Desktop\\Node JS\\Public\\index.html';
 // let filename = '\\Desktop\\Node JS\\index.html';
 // console.log(path.basename(filename));
 // console.log(path.basename(__filename));
@@ -101,4 +101,6 @@ let filename = 'C:\\Users\\T\\Desktop\\Node JS\\Public\\index.html';
 // console.log(path.join("users","category","diagrams","flowchart"));
 // console.log(path.resolve("users","category","diagrams","flowchart"))
 // console.log(path.parse(filename));
-console.log(path.isAbsolute(filename));
+// console.log(path.isAbsolute(filename));
+require('./module1');
+require('./module2');
