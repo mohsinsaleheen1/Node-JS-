@@ -2,7 +2,7 @@
 // console.log("Ha Bhai");
 // console.log("Kaisay hun ustaad");
 // let fs = require("fs");
-// let data = fs.readFileSync("info.txt","utf-8");
+// let data = fs.readFileSync("hhh.txt","utf-8");
 // console.log(data);
 // console.log("...The Ending Statement...");
 // fs.readFile("info.txt", "utf-8", (err, data) => {
@@ -113,3 +113,21 @@
 // }
 // show2(show1)
 // Events Module
+// let events = require('events');
+// let eventEmitter = new events.EventEmitter();
+
+// var myEventHandler = () =>{
+//     console.log("Order Received! Baking a Pasta.");
+// }
+// eventEmitter.on('order-Pasta',(size,topping)=>{
+//     console.log(`Order Received! Baking a ${size} Pasta with ${topping}.`);
+// });
+
+// eventEmitter.emit('order-Pasta','large','Black Olives');
+let fs = require('fs');
+console.log("Before");
+fs.readFile("./info.txt","utf-8",(err,data)=>{
+    console.log("Content Show");
+})
+
+console.log("After");
