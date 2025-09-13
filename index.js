@@ -124,10 +124,69 @@
 // });
 
 // eventEmitter.emit('order-Pasta','large','Black Olives');
-let fs = require('fs');
-console.log("Before");
-fs.readFile("./info.txt","utf-8",(err,data)=>{
-    console.log("Content Show");
-})
+// let fs = require('fs');
+// console.log("Before");
+// fs.readFile("./info.txt","utf-8",(err,data)=>{
+//     console.log("Content Show");
+// })
 
-console.log("After");
+// console.log("After");
+
+
+//////ASSIGMENT///////
+// const express = require('express');
+
+// const app = express();
+// const PORT = 3000;
+// app.use(express.json()) // for parsing application/json
+// app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+// app.get('/', (req, res, next) => {
+//     res.send('hello world!');
+
+// })
+// app.post('/home', (req, res, next) => {
+//     const userAge = req.body.userAge
+//     // console.log(userAge);
+//     if (userAge > 18) {
+//         res.send('You are allow in the web');
+//     }else{
+        
+//         res.send('You are not allow in the web');
+//     }
+// })
+
+// app.listen(PORT, () => {
+//     console.log(`server is running, on port : http://localhost:3000`)
+// })
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Body parsers
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// Root route
+app.get('/', (req, res) => {
+    res.send("Welcome to the API! Use POST /register to test.");
+});
+app.post('/register', (req, res) => {
+    const { name, age, country } = req.body;
+
+    if (!name || !age || !country) {
+        return res.status(400).send("Please provide name, age, and country.");
+    }
+
+    if (age < 18) {
+        return res.send(`Sorry ${name}, you must be 18+ to register.`);
+    }
+
+    if (country.toLowerCase() !== "pakistan") {
+        return res.send(`Sorry ${name}, this service is only for Pakistan users.`);
+    }
+
+    return res.send(`Welcome ${name}! You are registered successfully.`);
+});
+
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
