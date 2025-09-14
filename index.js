@@ -158,6 +158,22 @@
 // app.listen(PORT, () => {
 //     console.log(`server is running, on port : http://localhost:3000`)
 // })
+
+
+// console.log("First");
+// Promise.resolve().then(()=>{
+//     console.log("Promise Callback");
+// })
+// setTimeout(()=>{
+//     console.log("Time Out Callback");
+// },0);
+// setImmediate(()=>{
+//     console.log("Immediate Callback");
+// })
+// process.nextTick(()=>{
+//     console.log("NextTick CallBack");
+// })
+// console.log("third")
 const express = require('express');
 const app = express();
 const PORT = 3000;
