@@ -52,7 +52,7 @@
 // }).listen(3000,'localhost',()=>{
 //     console.log("Our server is runing at http://localhost:3000")
 // });
-// Routing Module 
+// Routing Module
 // const http = require("http");
 // const fs = require("fs");
 // http.createServer((req,res)=>{
@@ -132,7 +132,6 @@
 
 // console.log("After");
 
-
 //////ASSIGMENT///////
 // const express = require('express');
 
@@ -150,7 +149,7 @@
 //     if (userAge > 18) {
 //         res.send('You are allow in the web');
 //     }else{
-        
+
 //         res.send('You are not allow in the web');
 //     }
 // })
@@ -158,7 +157,6 @@
 // app.listen(PORT, () => {
 //     console.log(`server is running, on port : http://localhost:3000`)
 // })
-
 
 // console.log("First");
 // Promise.resolve().then(()=>{
@@ -174,35 +172,99 @@
 //     console.log("NextTick CallBack");
 // })
 // console.log("third")
-const express = require('express');
-const app = express();
-const PORT = 3000;
 
-// Body parsers
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// Root route
-app.get('/', (req, res) => {
-    res.send("Welcome to the API! Use POST /register to test.");
-});
-app.post('/register', (req, res) => {
-    const { name, age, country } = req.body;
+/////////// Express JS//////////
+///////////////////////////////////////
+///////////////////////////////////////
+// const express = require("express");
 
-    if (!name || !age || !country) {
-        return res.status(400).send("Please provide name, age, and country.");
-    }
+// // // Body parsers
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// // Root route
+// app.get("/", (req, res) => {
+//   res.send("Welcome to the API! Use POST /register to test.");
+// });
+// app.post("/register", (req, res) => {
+//   const { name, age, country } = req.body;
 
-    if (age < 18) {
-        return res.send(`Sorry ${name}, you must be 18+ to register.`);
-    }
+//   if (!name || !age || !country) {
+//     return res.status(400).send("Please provide name, age, and country.");
+//   }
 
-    if (country.toLowerCase() !== "pakistan") {
-        return res.send(`Sorry ${name}, this service is only for Pakistan users.`);
-    }
+//   if (age < 18) {
+//     return res.send(`Sorry ${name}, you must be 18+ to register.`);
+//   }
 
-    return res.send(`Welcome ${name}! You are registered successfully.`);
-});
+//   if (country.toLowerCase() !== "pakistan") {
+//     return res.send(`Sorry ${name}, this service is only for Pakistan users.`);
+//   }
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+//   return res.send(`Welcome ${name}! You are registered successfully.`);
+// });
+// app.listen(PORT, () => {
+//   console.log(`Server running at http://localhost:${PORT}`);
+// });
+///////////////////////////////////////////
+///////////////////////////////////////////
+// let path = require("path");
+// console.log(__dirname);
+// const app = express();
+// let public = path.join(__dirname,'public');
+// app.get('/',(req,res)=>{
+//     res.sendFile(`${public}/home.html`)
+// })
+// app.use(express.static(public))
+// const PORT = 3000;
+
+// app.get("/", (req, res) => {
+//   res.send(
+//     `<h2>Wellcome To My Home Page</h2>
+//         <a href="/about">go to about Page</a>`
+//   );
+// });
+// app.get("/about", (req, res) => {
+//   res.send([
+//     {
+//       name: "Ali",
+//       Age: "22",
+//       Depart: "BSAI",
+//     },
+//     {
+//       name: "Muneeb",
+//       Age: "20",
+//       Depart: "BSSE",
+//     },
+//     {
+//       name: "Hassan",
+//       Age: "21",
+//       Depart: "BSIT",
+//     },
+//   ]);
+// });
+// res.send(
+//     `<h2>Wellcome To My About Page</h2>
+//     <input type="text" placeholder="Enter Your Name" value= ${req.query.name}>
+//     <a href="/">go to Home Page</a>`
+// );
+//   const name = req.query.name;
+//   if (!name) {
+//     res.send(`<input type="text" placeholder="Enter Your Name">`);
+//   }else{
+//     `<input type="text" placeholder="Enter Your Name" value= ${name}>`
+//   }
+// app.get('/about',(req,res)=>{
+//     res.send("This is About Page");
+// })
+// app.get('/contact',(req,res)=>{
+//     res.send("This is Contact Page" + req.query.name);
+// })
+///////////// EJS//////////////
+const { name } = require('ejs');
+let express = require('express');
+let app = express();
+app.set("view engine","ejs");
+app.get('/',(req,res)=>{
+res.render('home',{name:"Mohsin"})
+})
+app.listen(3000);
