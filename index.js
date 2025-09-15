@@ -260,11 +260,46 @@
 //     res.send("This is Contact Page" + req.query.name);
 // })
 ///////////// EJS//////////////
-const { name } = require('ejs');
-let express = require('express');
-let app = express();
-app.set("view engine","ejs");
-app.get('/',(req,res)=>{
-res.render('home',{name:"Mohsin"})
-})
-app.listen(3000);
+// const { name } = require('ejs');
+// let express = require('express');
+// let app = express();
+// app.set("view engine","ejs");
+// app.get('/',(req,res)=>{
+// res.render('home',{name:"Mohsin"})
+// })
+// app.listen(3000);
+
+const express = require("express");
+let PORT = 3000;
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.get("/", (req, res) => {
+  res.send("Wellcome Login System");
+});
+const users = [
+  { email: "ahmed.khan@example.com", password: "ahmed123" },
+  { email: "sara.ali@example.com", password: "sara456" },
+  { email: "bilal.ahmed@example.com", password: "bilal789" },
+  { email: "fatima.zahid@example.com", password: "fatima321" },
+  { email: "usman.raza@example.com", password: "usman654" },
+  { email: "ayesha.noor@example.com", password: "ayesha987" },
+  { email: "hamza.malik@example.com", password: "hamza111" },
+  { email: "zara.shaikh@example.com", password: "zara222" },
+  { email: "ali.hassan@example.com", password: "ali333" },
+  { email: "maryam.iqbal@example.com", password: "maryam444" },
+];
+app.post("/login", (req, res) => {
+  const userEmail = req.body.userEmail;
+  const userPass = req.body.userPass;
+  for (let i = 0; i <= users.length - 1; i++) {
+    if(users[i].email == userEmail && users[i].password == userPass){
+        res.send("Login Successfull");
+    }else{
+        res.send("Invalid Password Or Email");
+    }
+  }
+});
+app.listen(PORT, () => {
+  console.log(`Server is runing at http://localhost:${PORT}`);
+});
