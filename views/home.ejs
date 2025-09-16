@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
+    <%- include('common/header') %>
     <h1>This is my Home Page</h1>
-    <p>My Name is: <%= name%></p>
-</body>
+    <h2><%=Emp.name %></h2>
+    <h2><%=Emp.Fname %></h2>
+    <h2><%=Emp.age %></h2>
+    <ul>
+      <% Emp.hobbies.forEach((item)=>{%>
+      <li><%= item %></li>
+      <% }); %>
+    </ul>
+    <!-- For Loop -->
+    <h1>For Loop</h1>
+    <% for(let i=1; i<=10; i++){ %>
+    <h3><%=i %></h3>
+    <% } %>
+    <!-- While Loop -->
+    <h1>While Loop</h1>
+    <% let i = 1; while(i<=10){ %>
+    <h3><%=i %></h3>
+    <% i++ %> <% } %>
+    <!-- If else Code -->
+    <h1>If Else Code</h1>
+    <% if(Emp.name == "Mohsin") { %>
+    <h2>Hello Mohsin</h2>
+    <% } else{ %>
+    <h2>Who are You ?</h2>
+    <% } %>
+    <%- include('common/footer') %>
+    <!-- <p>My Name is: <%# name%></p> -->
+  </body>
 </html>

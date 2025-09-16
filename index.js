@@ -265,9 +265,26 @@
 // let app = express();
 // app.set("view engine","ejs");
 // app.get('/',(req,res)=>{
-// res.render('home',{name:"Mohsin"})
+//     let Employee = {
+//         name:"Mohsin",
+//         Fname:"Saleheen",
+//         age:22,
+//         hobbies:['Coding','Eating','Drinking','Sleeping'],
+//     }
+// res.render('home',{Emp:Employee})
+// })
+// app.get('/about',(req,res)=>{
+//     res.render('about');
+// })
+// app.get("/contact",(req,res)=>{
+//     res.render("contact");
 // })
 // app.listen(3000);
+
+
+
+// // //////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
 
 const express = require("express");
 let PORT = 3000;
