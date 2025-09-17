@@ -292,45 +292,70 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Wellcome Login System");
 });
-const users = [
-  { email: "ahmed.khan@example.com", password: "ahmed123" },
-  { email: "sara.ali@example.com", password: "sara456" },
-  { email: "bilal.ahmed@example.com", password: "bilal789" },
-  { email: "fatima.zahid@example.com", password: "fatima321" },
-  { email: "usman.raza@example.com", password: "usman654" },
-  { email: "ayesha.noor@example.com", password: "ayesha987" },
-  { email: "hamza.malik@example.com", password: "hamza111" },
-  { email: "zara.shaikh@example.com", password: "zara222" },
-  { email: "ali.hassan@example.com", password: "ali333" },
-  { email: "maryam.iqbal@example.com", password: "maryam444" },
-];
-app.post("/login", (req, res) => {
-  const userEmail = req.body.userEmail;
-  const userPass = req.body.userPass;
-  let isFound = false;
-  if (userPass.length >= 5) {
-    for (let i = 0; i <= users.length - 1; i++) {
-      if (users[i].email == userEmail && users[i].password == userPass) {
-        isFound = true;
-        res.send({
-          status: 200,
-          message: "Login Successfull",
-        });
-      }
-      if (isFound === false) {
-        res.send({
-          status: 404,
-          message: "Login Failed",
-        });
-      }
+app.post("/signup", (req, res) => {
+  const { userName, userEmail, userPass } = req.body;
+  console.log(userName);
+  console.log(userEmail);
+  console.log(userPass);
+  let symbol = false;
+  for (let i = 0; i < userEmail.length; i++) {
+    if (userEmail[i] == "@") {
+      symbol = true;
+      break;
     }
-  } else {
-    res.send({
-      status: 404,
-      message: "Password must be atlaest five character",
+  }
+  if (!symbol) {
+    return res.send({
+      status: 400,
+      message: "Email must contain @ symbol.",
     });
   }
+  if (userPass.length < 6) {
+    return res.status(400).send({
+      message: "Password must be at least 6 characters long.",
+    });
+  }
+  res.send("Hello");
 });
+// const users = [
+//   { email: "ahmed.khan@example.com", password: "ahmed123" },
+//   { email: "sara.ali@example.com", password: "sara456" },
+//   { email: "bilal.ahmed@example.com", password: "bilal789" },
+//   { email: "fatima.zahid@example.com", password: "fatima321" },
+//   { email: "usman.raza@example.com", password: "usman654" },
+//   { email: "ayesha.noor@example.com", password: "ayesha987" },
+//   { email: "hamza.malik@example.com", password: "hamza111" },
+//   { email: "zara.shaikh@example.com", password: "zara222" },
+//   { email: "ali.hassan@example.com", password: "ali333" },
+//   { email: "maryam.iqbal@example.com", password: "maryam444" },
+// ];
+// app.post("/login", (req, res) => {
+//   const userEmail = req.body.userEmail;
+//   const userPass = req.body.userPass;
+//   let isFound = false;
+//   if (userPass.length >= 5) {
+//     for (let i = 0; i <= users.length - 1; i++) {
+//       if (users[i].email == userEmail && users[i].password == userPass) {
+//         isFound = true;
+//         res.send({
+//           status: 200,
+//           message: "Login Successfull",
+//         });
+//       }
+//       if (isFound === false) {
+//         res.send({
+//           status: 404,
+//           message: "Login Failed",
+//         });
+//       }
+//     }
+//   } else {
+//     res.send({
+//       status: 404,
+//       message: "Password must be atlaest five character",
+//     });
+//   }
+// });
 app.listen(PORT, () => {
   console.log(`Server is runing at http://localhost:${PORT}`);
 });
