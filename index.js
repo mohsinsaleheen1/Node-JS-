@@ -281,8 +281,6 @@
 // })
 // app.listen(3000);
 
-
-
 // // //////////////////////////////////////////////////////////////
 // ////////////////////////////////////////////////////////////////
 
@@ -309,12 +307,28 @@ const users = [
 app.post("/login", (req, res) => {
   const userEmail = req.body.userEmail;
   const userPass = req.body.userPass;
-  for (let i = 0; i <= users.length - 1; i++) {
-    if(users[i].email == userEmail && users[i].password == userPass){
-        res.send("Login Successfull");
-    }else{
-        res.send("Invalid Password Or Email");
+  let isFound = false;
+  if (userPass.length >= 5) {
+    for (let i = 0; i <= users.length - 1; i++) {
+      if (users[i].email == userEmail && users[i].password == userPass) {
+        isFound = true;
+        res.send({
+          status: 200,
+          message: "Login Successfull",
+        });
+      }
+      if (isFound === false) {
+        res.send({
+          status: 404,
+          message: "Login Failed",
+        });
+      }
     }
+  } else {
+    res.send({
+      status: 404,
+      message: "Password must be atlaest five character",
+    });
   }
 });
 app.listen(PORT, () => {
