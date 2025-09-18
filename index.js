@@ -281,6 +281,53 @@
 // })
 // app.listen(3000);
 
+// const express = require("express");
+// const reqFilter = require("./midleware");
+// const reqAge = require('./middleware2');
+// const errorHandler = require("./middleware3");
+// let PORT = 3000;
+// const app = express();
+// const router = express.Router();
+// router.use(reqAge);
+// app.use(reqFilter);
+
+// app.get("/", (req, res, next) => {
+//   const error = new Error("Something went wrong !!");
+//   error.statusCode = 404;
+//   error.status = "failed";
+//   next(error);
+//   res.send("This is Home Page");
+// });
+// app.get("/about", (req, res) => {
+//   res.send("This is About Page");
+// });
+// app.get("/contact", (req, res) => {
+//   res.send("This is Contact Page");
+// });
+// app.use(errorHandler);
+// app.listen(PORT, () => {
+//   console.log(`server is runing at http://localhost:${PORT}`);
+// });
+// app.get("/",reqAge, (req, res) => {
+//   res.send("This is Home Page");
+// });
+// app.get("/about",reqAge, (req, res) => {
+//   res.send("This is About Page");
+// });
+// app.get("/contact",reqAge, (req, res) => {
+//   res.send("This is Contact Page");
+// });
+
+// app.use((req,res,next)=>{
+//   console.log("This is First Middleware");
+//   next();
+//   // res.end()
+//   // return res.json({data:"Response From First Middleware."})
+// })
+// app.use((req,res,next)=>{
+//   console.log("This is Second Middleware");
+//   next();
+// })
 // // //////////////////////////////////////////////////////////////
 // ////////////////////////////////////////////////////////////////
 
@@ -316,6 +363,9 @@ app.post("/signup", (req, res) => {
     });
   }
   res.send("Hello");
+});
+app.listen(PORT, () => {
+  console.log(`Server is runing at http://localhost:${PORT}`);
 });
 // const users = [
 //   { email: "ahmed.khan@example.com", password: "ahmed123" },
@@ -356,6 +406,3 @@ app.post("/signup", (req, res) => {
 //     });
 //   }
 // });
-app.listen(PORT, () => {
-  console.log(`Server is runing at http://localhost:${PORT}`);
-});
