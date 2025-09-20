@@ -339,21 +339,47 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.send("Wellcome Login System");
 });
+const users = [
+  { email: "ahmed.khan@example.com", password: "ahmed123" },
+  { email: "sara.ali@example.com", password: "sara456" },
+  { email: "bilal.ahmed@example.com", password: "bilal789" },
+  { email: "fatima.zahid@example.com", password: "fatima321" },
+  { email: "usman.raza@example.com", password: "usman654" },
+  { email: "ayesha.noor@example.com", password: "ayesha987" },
+  { email: "hamza.malik@example.com", password: "hamza111" },
+  { email: "zara.shaikh@example.com", password: "zara222" },
+  { email: "ali.hassan@example.com", password: "ali333" },
+  { email: "maryam.iqbal@example.com", password: "maryam444" },
+];
 app.post("/signup", (req, res) => {
   const { userName, userEmail, userPass } = req.body;
   console.log(userName);
   console.log(userEmail);
   console.log(userPass);
   let symbol = false;
+
   for (let i = 0; i < userEmail.length; i++) {
     if (userEmail[i] == "@") {
       symbol = true;
+      for (let j = 0; j <= users.length - 1; j++) {
+        if (users[j].email !== userEmail) {
+          return res.send({
+            status: 400,
+            message: "Signup Successfully",
+          });
+        } else {
+          return res.send({
+            status: 404,
+            message: "User Already Exist",
+          });
+        }
+      }
       break;
     }
   }
   if (!symbol) {
     return res.send({
-      status: 400,
+      status: 404,
       message: "Email must contain @ symbol.",
     });
   }
